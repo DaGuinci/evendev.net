@@ -18,8 +18,17 @@ export class AppComponent {
   title = 'evendev.net';
 
   globaleSectionActive: string = '';
+  isExiting: boolean = false;
 
   onGlobalSectionActive(section: string) {
-    this.globaleSectionActive = section;
+    if (this.globaleSectionActive && this.globaleSectionActive !== section) {
+      this.isExiting = true;
+      setTimeout(() => {
+        this.isExiting = false;
+        this.globaleSectionActive = section;
+      }, 500); // Durée de l'animation
+    } else {
+      this.globaleSectionActive = section;
+    }
   }
 }

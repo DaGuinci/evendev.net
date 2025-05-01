@@ -3,7 +3,7 @@
     <app-nav (globalSectionActive)="onGlobalSectionActive($event)"></app-nav>
   </div>
   <!-- Sections -->
-  <div class="sections-container">
+  <div class="sections-container" [ngClass]="{'section-exit': isExiting, 'section-active': globaleSectionActive !== ''}">
     <router-outlet></router-outlet>
   </div>
 </div>
