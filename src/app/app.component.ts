@@ -39,9 +39,9 @@ export class AppComponent {
 
   onLogoClicked() {
     this.isExiting = true;
+    this.globaleSectionActive = '';
     setTimeout(() => {
       this.isExiting = false;
-      this.globaleSectionActive = '';
       this.router.navigate(['/']); // Navigation vers la page d'accueil après le délai
     }, 500); // Durée de l'animation
   }

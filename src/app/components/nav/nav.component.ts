@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class NavComponent {
 
   @Output() globalSectionActive = new EventEmitter<string>();
-  @Output() logoClicked = new EventEmitter<void>(); // Nouvel événement
+  @Output() logoClicked = new EventEmitter<void>();
 
   sectionActive = '';
 
@@ -24,6 +23,6 @@ export class NavComponent {
   }
 
   onLogoClick() {
-    this.logoClicked.emit(); // Émet l'événement lorsque le logo est cliqué
+    this.logoClicked.emit();
   }
 }
