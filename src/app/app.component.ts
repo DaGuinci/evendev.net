@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Import du service Router
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NgClass } from '@angular/common';
@@ -20,15 +21,28 @@ export class AppComponent {
   globaleSectionActive: string = '';
   isExiting: boolean = false;
 
+  constructor(private router: Router) {} // Injection du service Router
+
   onGlobalSectionActive(section: string) {
     if (this.globaleSectionActive && this.globaleSectionActive !== section) {
       this.isExiting = true;
       setTimeout(() => {
         this.isExiting = false;
         this.globaleSectionActive = section;
+        this.router.navigate([`/${section}`]); // Navigation après le délai
       }, 500); // Durée de l'animation
     } else {
       this.globaleSectionActive = section;
+      this.router.navigate([`/${section}`]); // Navigation immédiate
     }
+  }
+
+  onLogoClicked() {
+    this.isExiting = true;
+    setTimeout(() => {
+      this.isExiting = false;
+      this.globaleSectionActive = '';
+      this.router.navigate(['/']); // Navigation vers la page d'accueil après le délai
+    }, 500); // Durée de l'animation
   }
 }

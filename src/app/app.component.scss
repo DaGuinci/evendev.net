@@ -12,7 +12,7 @@
 
     .nav-container {
         width: 100%;
-        transition: width 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &.section-active {
             width: 30%;
@@ -23,9 +23,11 @@
     .sections-container {
         width: 70%;
         overflow: hidden;
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-
+        transition: all 0.5s ease-in-out;
+        
         &:not(.section-active) {
+            transform: translateX(100%);
+            opacity: 0;
             width: 0;
         }
 

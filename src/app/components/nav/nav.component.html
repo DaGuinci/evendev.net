@@ -1,34 +1,12 @@
 <div class="left">
-    <a
-        routerLink="/"
-        routerLinkActive="active"
-        (click)="setActiveSection('')"
-    >
-    <img src="/img/logo.svg" alt="Logo" class="logo" />
+    <a (click)="onLogoClick()">
+        <img src="/img/logo.svg" alt="Logo" class="logo" />
     </a>
-</div> 
+</div>
 <div class="right">
     <nav class="entries">
-        <a
-            routerLink="/about"
-            routerLinkActive="active"
-            (click)="setActiveSection('about')"
-        >
-            About
-        </a>
-        <a
-            routerLink="/contact"
-            routerLinkActive="active"
-            (click)="setActiveSection('contact')"
-        >
-            Contact
-        </a>
-        <a
-            routerLink="/projects"
-            routerLinkActive="active"
-            (click)="setActiveSection('projects')"
-        >
-            projects
-        </a>
+        <a (click)="setActiveSection('about')">About</a>
+        <a (click)="setActiveSection('contact')">Contact</a>
+        <a (click)="setActiveSection('projects')">Projects</a>
     </nav>
 </div>

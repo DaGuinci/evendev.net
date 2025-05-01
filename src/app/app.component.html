@@ -1,6 +1,9 @@
 <div class="container">
   <div class="nav-container" [ngClass]="{'section-active': globaleSectionActive !== ''}">
-    <app-nav (globalSectionActive)="onGlobalSectionActive($event)"></app-nav>
+    <app-nav 
+      (globalSectionActive)="onGlobalSectionActive($event)" 
+      (logoClicked)="onLogoClicked()">
+    </app-nav>
   </div>
   <!-- Sections -->
   <div class="sections-container" [ngClass]="{'section-exit': isExiting, 'section-active': globaleSectionActive !== ''}">
