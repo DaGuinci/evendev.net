@@ -10,11 +10,17 @@
     background-position: 0% 50%;
     animation: backgroundAnimation 30s infinite alternate;
 
-    .nav {
+    .nav-container {
         width: 100%;
+        transition: width 0.3s ease-in-out;
+
+        &.section-active {
+            width: 30%;
+        }
+
     }
 
-    .sections {
+    .sections-container {
         width: 0;
     }
 }

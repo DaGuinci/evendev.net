@@ -1,7 +1,9 @@
 <div class="container">
-  <app-nav></app-nav>
+  <div class="nav-container" [ngClass]="{'section-active': globaleSectionActive !== ''}">
+    <app-nav (globalSectionActive)="onGlobalSectionActive($event)"></app-nav>
+  </div>
   <!-- Sections -->
-  <div class="sections">
+  <div class="sections-container">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Router } from 'express';
 
 @Component({
   selector: 'app-nav',
@@ -17,4 +16,11 @@ import { Router } from 'express';
 })
 export class NavComponent {
 
+  @Output() globalSectionActive = new EventEmitter<string>();
+  sectionActive = '';
+
+  setActiveSection(section: string) {
+    this.globalSectionActive.emit(section);
+    this.sectionActive = section;
+  }
 }
