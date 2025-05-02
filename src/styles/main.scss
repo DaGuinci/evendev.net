@@ -15,13 +15,18 @@ body {
     color: white;
 }
 
-a {
+.btn {
     text-decoration: none;
-    color: variables.$links-color;
+    background-color: variables.$btn-bg-color;
+    color: variables.$btn-txt-color;
     transition: color 0.3s ease-in-out;
     text-align: center;
+    padding: 5px 25px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
     
     &:hover {
-        color: variables.$links-color-hover;
+        color: variables.$btn-txt-hover;
     }
 }
