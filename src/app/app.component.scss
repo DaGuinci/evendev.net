@@ -33,7 +33,6 @@
 
     .sections-container {
         width: 70%;
-        overflow: hidden;
         
         &:not(.section-active) {
             transform: translateX(100%);
