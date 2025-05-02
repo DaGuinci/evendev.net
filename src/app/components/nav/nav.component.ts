@@ -7,7 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss',
   host: {
-    class: 'nav'
+    class: 'nav content-bg'
   }
 })
 export class NavComponent {

@@ -3,7 +3,8 @@
 
 body,
 p,
-div {
+div,
+.nav {
     box-sizing: border-box;
 }
 
@@ -29,4 +30,15 @@ body {
     &:hover {
         color: variables.$btn-txt-hover;
     }
+}
+
+.content-bg {
+    background-color: variables.$content-bg-color;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 6px 6px 24px 0px rgba(0, 0, 0, 0.75);
+    height: 70vh;
+    overflow: auto;
+    transition: all 0.5s ease-in-out;
+
 }
