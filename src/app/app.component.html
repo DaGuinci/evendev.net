@@ -1,4 +1,6 @@
-<div class="container">
+<div class="container"
+  [ngClass]="{'fade-out': bgExiting, 'fade-in': !bgExiting}"
+  [ngStyle]="{'background-image': backgroundImage}">
   <div class="nav-container" [ngClass]="{'section-active': globaleSectionActive !== ''}">
     <app-nav 
       (globalSectionActive)="onGlobalSectionActive($event)" 
