@@ -3,37 +3,37 @@ name: Deploy Angular App
 on:
   push:
     branches:
-      - main # Déclenche le workflow sur les changements de la branche main
+      - dev
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Vérifiez le code source
+    # 1. Check the source code
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 2. Configurez Node.js
+    # 2. Configure Node.js
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18 # Version de Node.js compatible avec Angular
+        node-version: 18 # Node.js version compatible with Angular
 
-    # 3. Installez les dépendances
+    # 3. Install dependencies
     - name: Install dependencies
       run: npm install
 
-    # 4. Construisez l'application Angular
+    # 4. Build the Angular application
     - name: Build Angular app
       run: npm run build -- --configuration production
 
-    # 5. Déployez sur le serveur FTP
+    # 5. Deploy to the FTP server
     - name: Deploy to FTP server
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ${{ secrets.FTP_SERVER }} # Adresse du serveur FTP
-        username: ${{ secrets.FTP_USERNAME }} # Nom d'utilisateur FTP
-        password: ${{ secrets.FTP_PASSWORD }} # Mot de passe FTP
-        local-dir: dist/evendev.net/browser/ # Dossier local à téléverser
-        server-dir: /public_html/ # Dossier cible sur le serveur
+        server: ${{ secrets.FTP_SERVER }} # FTP server address
+        username: ${{ secrets.FTP_USERNAME }} # FTP username
+        password: ${{ secrets.FTP_PASSWORD }} # FTP password
+        local-dir: dist/evendev.net/browser/ # Local directory to upload
+        server-dir: /public_html/ # Target directory on the server
