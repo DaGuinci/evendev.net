@@ -24,11 +24,11 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      const url = 'https://example.com/api/contact'; // Remplacez par l'URL de votre API
+      const url = 'https://evendev.net/apimail/contact.php'; // Remplacez par l'URL de votre script PHP
       this.http.post(url, this.contactForm.value).subscribe({
-        next: (response) => {
+        next: () => {
           alert('Message envoyé avec succès !');
-          this.contactForm.reset(); // Réinitialise le formulaire
+          this.contactForm.reset();
         },
         error: (err) => {
           alert('Une erreur est survenue. Veuillez réessayer.');
