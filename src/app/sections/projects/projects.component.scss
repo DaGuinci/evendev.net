@@ -1,16 +1,16 @@
 .projects {
     display: flex;
     overflow: auto;
-    gap: 20px;     
+    gap: 30px;     
     
     &__card {
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        max-width: 30%;
-        border: white 1px solid;
-        border-radius: 10px;
-        padding: 20px;
+        justify-content: space-between;
+        gap: 20px;
+        max-width: 25%;
+        padding: 20px 0;
+        border-radius: 15px;
         overflow: auto;
         background-color: rgb(33, 47, 48, 1);
         transition: all 0.3s ease-in-out;
@@ -20,6 +20,7 @@
         }
 
         &__header {
+            padding: 0 20px;
 
             h1 {
                 font-size: 2rem;
@@ -32,7 +33,19 @@
         }
 
         &__image {
-            max-width: 90%;
+            max-width: 100%;
+        }
+
+        &__description {
+            padding: 0 20px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        &__actions {
+            display: flex;
+            gap: 15px;
+            padding: 0 20px;
         }
     }
 }
