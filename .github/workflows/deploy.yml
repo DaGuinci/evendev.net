@@ -35,5 +35,5 @@ jobs:
         server: ${{ secrets.FTP_SERVER }} # Adresse du serveur FTP
         username: ${{ secrets.FTP_USERNAME }} # Nom d'utilisateur FTP
         password: ${{ secrets.FTP_PASSWORD }} # Mot de passe FTP
-        local-dir: dist/evendev.net/browser # Dossier local à téléverser
-        server-dir: /public_html # Dossier cible sur le serveur
+        local-dir: dist/evendev.net/browser/ # Dossier local à téléverser
+        server-dir: /public_html/ # Dossier cible sur le serveur
