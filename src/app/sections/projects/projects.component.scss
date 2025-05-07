@@ -7,7 +7,8 @@
     gap: 30px;
     
     @media screen and (min-width: $medium) {
-        flex-direction: row;        
+        flex-direction: row;
+        flex-wrap: wrap;   
     }
     
     &__card {
@@ -23,7 +24,7 @@
         transition: all 0.3s ease-in-out;
 
         @media screen and (min-width: $medium) {
-            max-width: 25%;
+            max-width: 30%;
             
         }
 
