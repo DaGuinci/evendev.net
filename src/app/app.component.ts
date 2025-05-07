@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Import du service Router
+import { Router, NavigationEnd } from '@angular/router'; // Import de NavigationEnd
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NgClass, NgStyle } from '@angular/common';
@@ -28,8 +28,17 @@ export class AppComponent {
   url = '/img/home-bg.jpg';
   backgroundImage = `${this.gradient}, url('${this.url}')`;
 
-
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    // Écoute les événements de navigation
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const section = event.urlAfterRedirects.replace('/', '');
+        this.onGlobalSectionActive(section);
+        // this.globaleSectionActive = section || '';
+        // this.updateBackgroundImage(section);
+      }
+    });
+  }
 
   onGlobalSectionActive(section: string) {
     // from section to section and section to home
