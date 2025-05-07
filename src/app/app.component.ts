@@ -57,6 +57,7 @@ export class AppComponent {
   onLogoClicked() {
     this.isExiting = true;
     this.globaleSectionActive = '';
+    this.updateBackgroundImage(''); // Met à jour l'image de fond
     setTimeout(() => {
       this.isExiting = false;
       this.router.navigate(['/']);

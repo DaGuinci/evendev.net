@@ -102,11 +102,9 @@
   &.visible {
     transform: translateX(120px);
   }
-}
 
-@media screen and (max-width: 576px) {
-  .mobile-nav-btn {
-    display: block; /* Visible uniquement sur les petits écrans */
+  @media screen and (min-width: $medium) {
+    display: none;
   }
 }
 
