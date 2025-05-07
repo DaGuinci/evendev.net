@@ -1,12 +1,19 @@
 <div class="container"
   [ngClass]="{'fade-out': bgExiting, 'fade-in': !bgExiting}"
   [ngStyle]="{'background-image': backgroundImage}">
+  
+  <!-- Bouton pour petits écrans -->
+  <button class="mobile-nav-btn btn" 
+          [ngClass]="{'visible': globaleSectionActive !== ''}" 
+          (click)="onLogoClicked()">Home</button>
+
   <div class="nav-container" [ngClass]="{'section-active': globaleSectionActive !== ''}">
     <app-nav 
       (globalSectionActive)="onGlobalSectionActive($event)" 
       (logoClicked)="onLogoClicked()">
     </app-nav>
   </div>
+  
   <!-- Sections -->
   <div class="sections-container content-bg" [ngClass]="{'section-exit': isExiting, 'section-active': globaleSectionActive !== ''}">
     <router-outlet></router-outlet>

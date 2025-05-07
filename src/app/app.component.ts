@@ -3,11 +3,13 @@ import { Router } from '@angular/router'; // Import du service Router
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NgClass, NgStyle } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [
+    CommonModule,
     NgClass,
     NgStyle,
     RouterOutlet,

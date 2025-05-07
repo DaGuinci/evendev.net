@@ -1,14 +1,21 @@
+@use '../styles/variables' as *;
+
 .container {
     position: relative;
     display: flex;
     height: 100vh;
     overflow: hidden;
     padding: 5%;
-    background-size: 130%;
+    background-size: cover;    
+    background-repeat: no-repeat;
     background-position: 0% 50%;
     animation: backgroundAnimation 30s infinite alternate;
     transition: all 0.5s ease-in-out;
     z-index: 1;
+
+    @media screen and (min-width: $medium) {
+        background-size: 130%;
+    }
 
     &::before {
         position: absolute;
@@ -42,22 +49,35 @@
         transition: all 0.3s ease-in-out;
         
         &.section-active {
-            width: 25%;
+            width: 0;
+            
+            @media screen and (min-width: $medium) {
+                width: 25%; 
+            }
         }
         
         .nav {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            width: 100%;
             gap: 20px;
-            width: 50%;
-            justify-content: space-between;
             align-items: center;
+            
+            @media screen and (min-width: $medium) {
+                width: 50%;
+                justify-content: space-between;
+            }
         }
 
     }
 
     .sections-container {
-        width: 70%;
+        width: 100%;
+
+        @media screen and (min-width: $medium) {
+            width: 70%;
+        }
         
         &:not(.section-active) {
             transform: translateX(100%);
@@ -72,6 +92,23 @@
     }
 }
 
+.mobile-nav-btn {
+  position: fixed;
+  top: 40px;
+  left: -100px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  &.visible {
+    transform: translateX(120px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .mobile-nav-btn {
+    display: block; /* Visible uniquement sur les petits écrans */
+  }
+}
 
 // Background Animation
 @keyframes backgroundAnimation {

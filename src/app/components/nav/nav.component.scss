@@ -1,3 +1,5 @@
+@use '../../../styles/variables' as *;
+
 .left {
     width: 100%;
     display: flex;
@@ -24,8 +26,11 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    flex-grow: 1;
     padding-top: 5vh;
+    
+    @media screen and (min-width: $medium) {
+        flex-grow: 1;   
+    }
 
     .entries {
         display: flex;

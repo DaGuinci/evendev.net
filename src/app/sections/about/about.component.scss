@@ -1,8 +1,14 @@
+@use '../../../styles/variables' as *;
+
 .about-content {
     height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 20px;
+    display: block;
+    padding: 20px;
+
+    @media screen and (min-width: $medium) {
+      display: flex;
+      align-items: center;
+    }
 
   p {
     text-align: center;
