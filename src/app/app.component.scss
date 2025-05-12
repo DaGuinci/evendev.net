@@ -24,7 +24,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-image: radial-gradient(circle,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 80%);
+        background-image: var(--gradient);
         z-index: -1;
         transition: opacity 0.5s ease-in-out;
         opacity: 1;

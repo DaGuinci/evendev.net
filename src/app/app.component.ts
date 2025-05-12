@@ -1,5 +1,5 @@
-import { Component, Renderer2 } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router'; // Import de NavigationEnd
+import { Component, Renderer2, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NgClass, NgStyle } from '@angular/common';
@@ -18,47 +18,50 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'evendev.net';
   
   globaleSectionActive: string = '';
   isExiting: boolean = false;
   bgExiting: boolean = false;
-  gradient = 'radial-gradient(circle,rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 1) 80%)';
   url = '/img/home-bg.jpg';
-  backgroundImage = `${this.gradient}, url('${this.url}')`;
   currentTheme: 'light' | 'dark' = 'light';
+  gradient = 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgb(255, 255, 255) 80%)';
+  backgroundImage = `${this.gradient}, url('${this.url}')`;
 
   constructor(private router: Router, private renderer: Renderer2) {
-    // Écoute les événements de navigation
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const section = event.urlAfterRedirects.replace('/', '');
         this.onGlobalSectionActive(section);
-        // this.globaleSectionActive = section || '';
-        // this.updateBackgroundImage(section);
       }
     });
   }
 
+  ngOnInit() {
+    // Appliquer le thème par défaut (light) au chargement
+    const htmlElement = document.documentElement;
+    this.renderer.addClass(htmlElement, this.currentTheme);
+  }
+
   onGlobalSectionActive(section: string) {
-    // from section to section and section to home
     if (this.globaleSectionActive && this.globaleSectionActive !== section) {
       this.isExiting = true;
-      this.bgExiting = true;
+      // this.bgExiting = true;
+      this.updateBackgroundImage(section);
       setTimeout(() => {
         this.isExiting = false;
-        this.updateBackgroundImage(section);
+        // this.updateBackgroundImage(section);
         this.globaleSectionActive = section;
         this.router.navigate([`/${section}`]);
       }, 500);
-    // from home to section
     } else {
-      this.bgExiting = true;
-      this.globaleSectionActive = section;
+      // this.bgExiting = true;
+      this.updateBackgroundImage(section);
       setTimeout(() => {
-        // this.bgExiting = false;
-        this.updateBackgroundImage(section);
+        this.globaleSectionActive = section;
+
+        // this.updateBackgroundImage(section);
       }, 500);
       this.router.navigate([`/${section}`]);
     }
@@ -67,7 +70,7 @@ export class AppComponent {
   onLogoClicked() {
     this.isExiting = true;
     this.globaleSectionActive = '';
-    this.updateBackgroundImage(''); // Met à jour l'image de fond
+    this.updateBackgroundImage('');
     setTimeout(() => {
       this.isExiting = false;
       this.router.navigate(['/']);
@@ -75,29 +78,28 @@ export class AppComponent {
   }
 
   updateBackgroundImage(section: string) {
+    this.bgExiting = true;
     switch (section) {
       case 'projects':
-        // this.backgroundImage = `${this.gradient}, url('/img/projects-bg.jpg')`;
         this.url = `/img/projects-bg.jpg`;
-        console.log(this.url);
         break;
       case 'about':
         this.url = '/img/about-bg.jpg';
-        console.log(this.url);
         break;
       case 'contact':
         this.url = '/img/contact-bg.jpg';
-        console.log(this.url);
         break;
       default:
         this.url = '/img/home-bg.jpg';
-        console.log(this.url);
         break;
-    }
-    this.backgroundImage = `${this.gradient}, url('${this.url}')`;
-    setTimeout(() => {
-      this.bgExiting = false;
-    }, 200);
+      }
+
+      console.log('url', this.url);
+
+      setTimeout(() => {
+        this.backgroundImage = `${this.gradient}, url('${this.url}')`;
+        this.bgExiting = false;
+      }, 1000);
   }
 
   toggleTheme() {
@@ -106,10 +108,13 @@ export class AppComponent {
       this.renderer.removeClass(htmlElement, 'light');
       this.renderer.addClass(htmlElement, 'dark');
       this.currentTheme = 'dark';
+      this.gradient = `radial-gradient(circle, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 1) 80%), url('${this.url}')`;
     } else {
       this.renderer.removeClass(htmlElement, 'dark');
       this.renderer.addClass(htmlElement, 'light');
       this.currentTheme = 'light';
+      this.gradient = `radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 80%), url('${this.url}')`;
     }
+    this.backgroundImage = `${this.gradient}, url('${this.url}')`;
   }
 }

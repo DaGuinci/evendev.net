@@ -2,33 +2,37 @@ $green: rgba(33, 47, 48, 1);
 $green-opacity: rgba(33, 47, 48, 0.6);
 $violet: #8A84E2;
 $custom-white: #FAFFD8;
+$custom-white-opacity: rgba(250, 253, 216, 0.4);
+$custom-black: #333333;
 
 // Light theme
 @mixin light-theme {
-    --primary-color: #ffffff;
-    --secondary-color: #6200ea;
-    --background-color: #f5f5f5;
-    --text-color: #333333;
-    --btn-bg-color: #6200ea;
-    --btn-border-color: #ffffff;
-    --btn-txt-color: #333333;
-    --btn-txt-hover: #ffffff;
-    --content-bg-color: #f5f5f5;
-    --card-bg-color: #e0e0e0;
-  }
+  --gradient: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgb(255, 255, 255) 80%);
+  --primary-color: #{$custom-white};
+  --secondary-color: #6200ea;
+  --background-color: #{$custom-white-opacity};
+  --text-color: #{$custom-black};
+  --btn-bg-color: transparent;
+  --btn-border-color: transparent;
+  --btn-txt-color: #{$green};
+  --btn-txt-hover: #{$violet};
+  --content-bg-color: #{$custom-white-opacity};
+  --card-bg-color: #e0e0e0;
+}
   
-  // Dark theme
-  @mixin dark-theme {
-    --primary-color: #{$green};
-    --secondary-color: #{$violet};
-    --background-color: #{$green-opacity};
-    --content-bg-color: #{$green-opacity};
-    --text-color: #{$custom-white};
-    --btn-bg-color: transparent;
-    --btn-border-color: transparent;
-    --btn-txt-hover: #{$violet};
-    --card-bg-color: #{$green};
-  }
+// Dark theme
+@mixin dark-theme {
+  --gradient: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 1) 80%);
+  --primary-color: #{$green};
+  --secondary-color: #{$violet};
+  --background-color: #{$green-opacity};
+  --content-bg-color: #{$green-opacity};
+  --text-color: #{$custom-white};
+  --btn-bg-color: transparent;
+  --btn-border-color: transparent;
+  --btn-txt-hover: #{$violet};
+  --card-bg-color: #{$green};
+}
 
 
 $small: 576px;
