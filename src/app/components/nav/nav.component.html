@@ -1,4 +1,4 @@
-<div class="left">
+<div class="top">
     <a>
         <img
             src="/img/logo.png"
@@ -7,10 +7,37 @@
         />
     </a>
 </div>
-<div class="right">
+<div class="middle">
     <nav class="entries">
         <a class="btn" (click)="setActiveSection('projects')">Projects</a>
         <a class="btn" (click)="setActiveSection('about')">About</a>
         <a class="btn" (click)="setActiveSection('contact')">Contact</a>
     </nav>
+</div>
+<div class="bottom">
+    <div class="entries">
+        <a
+            href="https://www.linkedin.com/in/your-profile"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="social-icon-linkedin"
+            style="mask-image: url('/img/icons/linkedin.svg');"
+        >
+        </a>
+        <a
+            href="https://github.com/your-username"
+            target="_blank"
+            aria-label="GitHub"
+            class="social-icon-github"
+            style="mask-image: url('/img/icons/github.svg');"
+        >
+        </a>
+        <a 
+            href="/files/geven_cv_en.pdf"
+            download aria-label="Download CV"
+            class="social-icon-cv"
+            style="mask-image: url('/img/icons/cv.svg');"
+        >
+        </a>
+    </div>
 </div>
