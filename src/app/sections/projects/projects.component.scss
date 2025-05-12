@@ -20,9 +20,10 @@
         padding: 20px 0;
         border-radius: 15px;
         overflow: auto;
-        background-color: rgb(33, 47, 48, 1);
-
+        background-color: var(--card-bg-color);
+        
         @media screen and (min-width: $medium) {
+            transition: all 0.3s ease;
             max-width: 30%;
             
         }

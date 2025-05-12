@@ -7,6 +7,10 @@
           [ngClass]="{'visible': globaleSectionActive !== ''}" 
           (click)="onLogoClicked()">Menu</button>
 
+  <button class="btn toggle-theme-btn" (click)="toggleTheme()">
+    Toggle Theme
+  </button>
+
   <div class="nav-container" [ngClass]="{'section-active': globaleSectionActive !== ''}">
     <app-nav 
       (globalSectionActive)="onGlobalSectionActive($event)" 

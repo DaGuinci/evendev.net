@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router'; // Import de NavigationEnd
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
@@ -27,8 +27,9 @@ export class AppComponent {
   gradient = 'radial-gradient(circle,rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 1) 80%)';
   url = '/img/home-bg.jpg';
   backgroundImage = `${this.gradient}, url('${this.url}')`;
+  currentTheme: 'light' | 'dark' = 'light';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private renderer: Renderer2) {
     // Écoute les événements de navigation
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -97,5 +98,18 @@ export class AppComponent {
     setTimeout(() => {
       this.bgExiting = false;
     }, 200);
+  }
+
+  toggleTheme() {
+    const htmlElement = document.documentElement;
+    if (this.currentTheme === 'light') {
+      this.renderer.removeClass(htmlElement, 'light');
+      this.renderer.addClass(htmlElement, 'dark');
+      this.currentTheme = 'dark';
+    } else {
+      this.renderer.removeClass(htmlElement, 'dark');
+      this.renderer.addClass(htmlElement, 'light');
+      this.currentTheme = 'light';
+    }
   }
 }

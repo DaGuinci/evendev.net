@@ -97,7 +97,7 @@
   top: 40px;
   left: -100px;
   z-index: 1000;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 
   &.visible {
     transform: translateX(120px);
@@ -117,3 +117,21 @@
       background-position: 80% 50%;
     }
 }
+
+.toggle-theme-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-txt-color);
+    border: 1px solid var(--btn-border-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  
+    &:hover {
+      background-color: var(--btn-txt-hover);
+    }
+  }
