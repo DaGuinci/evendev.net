@@ -7,9 +7,17 @@
           [ngClass]="{'visible': globaleSectionActive !== ''}" 
           (click)="onLogoClicked()">Menu</button>
 
-  <button class="btn toggle-theme-btn" (click)="toggleTheme()">
+  <!-- <button class="btn toggle-theme-btn" (click)="toggleTheme()">
     Toggle Theme
-  </button>
+  </button> -->
+
+  <div class="theme-toggle">
+    <span class="theme-label">Dark</span>
+    <div class="theme-switch" (click)="toggleTheme()">
+      <div class="theme-thumb" [ngClass]="{'dark': currentTheme === 'dark', 'light': currentTheme === 'light'}"></div>
+    </div>
+    <span class="theme-label">Light</span>
+  </div>
 
   <div class="nav-container" [ngClass]="{'section-active': globaleSectionActive !== ''}">
     <app-nav 
