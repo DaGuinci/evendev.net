@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   isExiting: boolean = false;
   bgExiting: boolean = false;
   url = '/img/home-bg.jpg';
-  currentTheme: 'light' | 'dark' = 'light';
+  currentTheme: 'light' | 'dark' = 'dark';
   gradient = 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgb(255, 255, 255) 80%)';
   backgroundImage = `${this.gradient}, url('${this.url}')`;
 
