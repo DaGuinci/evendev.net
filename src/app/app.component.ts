@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private renderer: Renderer2) {
     this.router.events.subscribe(event => {
+      // manage the back button
       if (event instanceof NavigationEnd) {
         const section = event.urlAfterRedirects.replace('/', '');
         this.onGlobalSectionActive(section);
@@ -39,40 +40,47 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Appliquer le thème par défaut (light) au chargement
+    // Apply the default theme (light) on load
     const htmlElement = document.documentElement;
     this.renderer.addClass(htmlElement, this.currentTheme);
   }
 
   onGlobalSectionActive(section: string) {
-    if (this.globaleSectionActive && this.globaleSectionActive !== section) {
+    if (
+      this.globaleSectionActive
+      && this.globaleSectionActive !== section
+      && section !== ''
+    ) {
+      // Change section
       this.isExiting = true;
-      // this.bgExiting = true;
       this.updateBackgroundImage(section);
       setTimeout(() => {
         this.isExiting = false;
-        // this.updateBackgroundImage(section);
+        this.globaleSectionActive = section;
+        this.router.navigate([`/${section}`]);
+      }, 500);
+    } else if (section === '') {
+      // Go back to home
+      this.updateBackgroundImage(section);
+      setTimeout(() => {
+        this.isExiting = false;
         this.globaleSectionActive = section;
         this.router.navigate([`/${section}`]);
       }, 500);
     } else {
-      // this.bgExiting = true;
+      // Loading a section for the first time
       this.updateBackgroundImage(section);
       setTimeout(() => {
         this.globaleSectionActive = section;
-
-        // this.updateBackgroundImage(section);
       }, 500);
       this.router.navigate([`/${section}`]);
     }
   }
 
   onLogoClicked() {
-    this.isExiting = true;
     this.globaleSectionActive = '';
     this.updateBackgroundImage('');
     setTimeout(() => {
-      this.isExiting = false;
       this.router.navigate(['/']);
     }, 500);
   }
@@ -93,9 +101,6 @@ export class AppComponent implements OnInit {
         this.url = '/img/home-bg.jpg';
         break;
     }
-
-    console.log('Background URL:', this.url);
-
     setTimeout(() => {
       this.backgroundImage = `${this.gradient}, url('${this.url}')`;
       this.bgExiting = false;
