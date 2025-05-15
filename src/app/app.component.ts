@@ -92,14 +92,14 @@ export class AppComponent implements OnInit {
       default:
         this.url = '/img/home-bg.jpg';
         break;
-      }
+    }
 
-      console.log('url', this.url);
+    console.log('Background URL:', this.url);
 
-      setTimeout(() => {
-        this.backgroundImage = `${this.gradient}, url('${this.url}')`;
-        this.bgExiting = false;
-      }, 1000);
+    setTimeout(() => {
+      this.backgroundImage = `${this.gradient}, url('${this.url}')`;
+      this.bgExiting = false;
+    }, 1000);
   }
 
   toggleTheme() {
@@ -108,13 +108,13 @@ export class AppComponent implements OnInit {
       this.renderer.removeClass(htmlElement, 'light');
       this.renderer.addClass(htmlElement, 'dark');
       this.currentTheme = 'dark';
-      this.gradient = `radial-gradient(circle, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 1) 80%), url('${this.url}')`;
+      this.gradient = `radial-gradient(circle, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 1) 80%)`;
     } else {
       this.renderer.removeClass(htmlElement, 'dark');
       this.renderer.addClass(htmlElement, 'light');
       this.currentTheme = 'light';
-      this.gradient = `radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 80%), url('${this.url}')`;
+      this.gradient = `radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 80%)`;
     }
-    this.backgroundImage = `${this.gradient}, url('${this.url}')`;
+    this.updateBackgroundImage(this.globaleSectionActive);
   }
 }
