@@ -2,7 +2,7 @@ $green: rgba(33, 47, 48, 1); // #212F30
 $green-opacity: rgba(33, 47, 48, 0.6);
 $blue: #4F7CAC;
 $custom-white: #d0e9f3;
-$custom-white-opacity: rgba(208, 233, 243, 0.4);
+$custom-white-opacity: rgba(208, 233, 243, 0.6);
 
 $custom-black: #333333;
 
@@ -17,10 +17,14 @@ $red: #a22c29;
   --secondary-color: #{$blue};
   --background-color: #{$custom-white-opacity};
   --text-color: #{$custom-black};
-  --btn-bg-color: transparent;
-  --btn-border-color: transparent;
-  --btn-txt-color: #{$green};
-  --btn-txt-hover: #{$blue};
+  // --btn-bg-color: #{$green};
+  // --btn-border-color: transparent;
+  // --btn-txt-color: #{$green};
+  // --btn-txt-hover: #{$blue};
+  --btn-bg-color: #{$blue};
+  --btn-border-color: #{$custom-white};
+  --btn-txt-color: #{$custom-white};
+  --btn-txt-hover: #{$custom-white};
   --content-bg-color: #{$custom-white-opacity};
   --card-bg-color: #e0e0e0;
 }
@@ -33,9 +37,14 @@ $red: #a22c29;
   --background-color: #{$green-opacity};
   --content-bg-color: #{$green-opacity};
   --text-color: #{$custom-white};
-  --btn-bg-color: transparent;
-  --btn-border-color: transparent;
-  --btn-txt-hover: #{$yellow};
+  // --btn-txt-color: #{$custom-white};
+  // --btn-bg-color: transparent;
+  // --btn-border-color: transparent;
+  // --btn-txt-hover: #{$yellow};
+  --btn-txt-color: #{$custom-white};
+  --btn-bg-color: #{$green};
+  --btn-border-color: #{$blue};
+  --btn-txt-hover: #{$blue};
   --card-bg-color: #{$green};
 }
 

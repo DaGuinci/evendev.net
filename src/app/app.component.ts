@@ -118,7 +118,7 @@ export class AppComponent implements OnInit {
       this.renderer.removeClass(htmlElement, 'dark');
       this.renderer.addClass(htmlElement, 'light');
       this.currentTheme = 'light';
-      this.gradient = `radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 80%)`;
+      this.gradient = `radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.5) 80%)`;
     }
     this.updateBackgroundImage(this.globaleSectionActive);
   }
